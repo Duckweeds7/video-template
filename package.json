@@ -1,8 +1,17 @@
 {
   "name": "video-template",
   "version": "1.0.0",
-  "main": "src/index.ts",
+  "description": "Template model describing video structure",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "dist": "dist"
+  },
   "scripts": {
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "release": "npm run build && npm publish",
     "test": "jest"
   },
   "repository": "https://github.com/TIDC/video-template.git",
@@ -12,9 +21,14 @@
     "@babel/preset-env": "^7.18.9",
     "@babel/preset-typescript": "^7.18.6",
     "@types/jest": "^28.1.6",
+    "@types/lodash": "^4.14.182",
+    "ts-node": "^10.9.1",
     "babel-jest": "^28.1.3",
     "jest": "^28.1.3",
-    "ts-node": "^10.9.1",
+    "tsup": "^5.12.6",
     "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
