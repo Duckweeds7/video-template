@@ -1,4 +1,4 @@
-interface ITemplateOptions {
+export default interface ITemplateOptions {
     type?: string;  //模板类型
     version?: string;  //模板版本号
     id?: number;  //模板ID
@@ -22,5 +22,3 @@ interface ITemplateOptions {
     updateTime?: number | string;  //模板更新时间戳
     children?: [];  //模板子节点
 }
-
-export default ITemplateOptions;
