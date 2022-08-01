@@ -1,6 +1,4 @@
 import ISceneOptions from './interface/ISceneOptions';
-import ITransitionOptions from "./components/interface/ITransitionOptions";
-import IFilterOptions from "./components/interface/IFilterOptions";
 import Base from './Base';
 import Element from "./elements/Element";
 import Transition from './components/Transition';
@@ -9,22 +7,23 @@ import util from './util';
 
 export default class Scene extends Base {
 
+    static type = "scene";
+    readonly type = "scene";
     id = '';  //场景ID
     name?: string;  //场景名称
     poster?: string;  //场景封面图
     duration = 0;  //场景时长
     backgroundColor?: string;  //场景背景颜色
-    transition?: Transition | ITransitionOptions;  //场景转场效果
-    filter?: Filter | IFilterOptions;  //场景滤镜
+    transition?: Transition;  //场景转场效果
+    filter?: Filter;  //场景滤镜
     children?: Element[] = [];  //场景子节点
 
     constructor(options: ISceneOptions) {
         super();
         this.optionsInject(options, {
-            transition: (v: any) => Transition.create(v),
-            filter: (v: any) => Filter.create(v),
-            children: (v: any) => util.defaultTo(v, [])
-            .map((options: any) => {})
+            transition: Transition.create,
+            filter: Filter.create,
+            children: (v: any) => (v || []).map((options: any) => Element.create(options))
         }, {
             id: util.isString,
             name: util.isString,
@@ -37,6 +36,13 @@ export default class Scene extends Base {
         });
     }
 
-    
+    static create(value: any) {
+        if(util.isUndefined(value)) return value;
+        return Scene.isInstance(value) ? value : new Scene(value);
+    }
+
+    static isInstance(value: any) {
+        return value instanceof Scene;
+    }
 
 }

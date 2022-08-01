@@ -1,13 +1,14 @@
 import ITemplateOptions from "./interface/ITemplateOptions";
-import IFilterOptions from "./components/interface/IFilterOptions";
 import Base from "./Base";
 import Scene from './Scene';
 import Element from './elements/Element';
+import Filter from "./components/Filter";
 import util from './util';
 
 export default class Template extends Base {
 
-    type?: string;  //模板类型
+    static type = "template";
+    readonly type = "template";
     version?: string;  //模板版本号
     id = '';  //模板ID
     name?: string;  //模板名称
@@ -26,7 +27,7 @@ export default class Template extends Base {
     audioBitrate?: string;  //音频码率
     outputFormat?: string;  //输出视频格式
     others?: object;  //模板其它信息对象
-    filter?: IFilterOptions;  //模板滤镜
+    filter?: Filter;  //模板滤镜
     createTime?: number;  //模板创建时间戳
     updateTime?: number;  //模板更新时间戳
     children?: (Scene | Element)[] = [];  //模板子节点
@@ -40,10 +41,9 @@ export default class Template extends Base {
             frameQuality: Number,
             createTime: Number,
             updateTime: Number,
-            children: (v: any) => util.defaultTo(v, [])
-            .map((options: any) => {})
+            children: (v: any) => (v || []).map((options: any) => 
+            options.type === Scene.type ? Scene.create(options) : Element.create(options))
         }, {
-            type: util.isString,
             version: util.isString,
             id: util.isString,
             name: util.isString,

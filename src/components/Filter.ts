@@ -1,15 +1,14 @@
-import util from 'src/util';
+import IFilterOptions from './interface/IFilterOptions';
 import Base from '../Base';
+import util from '../util';
 
 export default class Filter extends Base {
 
     type = '';  //滤镜类型
 
-    constructor(options: any) {
+    constructor(options: IFilterOptions) {
         super();
-        this.optionsInject(options, {
-
-        }, {
+        this.optionsInject(options, {}, {
             type: util.isString
         });
     }

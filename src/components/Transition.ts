@@ -1,3 +1,4 @@
+import ITransitionOptions from './interface/ITransitionOptions';
 import Base from '../Base';
 import util from '../util';
 
@@ -6,7 +7,7 @@ export default class Transition extends Base {
     type = '';  //转场类型
     duration = 0;  //转场持续时长
 
-    constructor(options: any) {
+    constructor(options: ITransitionOptions) {
         super();
         this.optionsInject(options, {
             duration: Number

@@ -1,11 +1,16 @@
+import ISceneOptions from "./ISceneOptions";
+import IElementOptions from "../elements/interface/IElementOptions";
+import Scene from "../Scene";
+import Element from "../elements/Element";
+
 export default interface ITemplateOptions {
     type?: string;  //模板类型
     version?: string;  //模板版本号
-    id?: number;  //模板ID
+    id: number;  //模板ID
     name?: string;  //模板名称
     poster?: string;  //模板封面图URL
-    width?: number | string;  //模板宽度
-    height?: number | string;  //模板高度
+    width: number | string;  //模板宽度
+    height: number | string;  //模板高度
     aspectRatio?: string;  //模板比例
     fps?: number | string;  //视频帧率
     backgroundColor?: string;  //模板背景色
@@ -20,5 +25,5 @@ export default interface ITemplateOptions {
     others?: object;  //模板其它信息对象
     createTime?: number | string;  //模板创建时间戳
     updateTime?: number | string;  //模板更新时间戳
-    children?: [];  //模板子节点
+    children?: (Scene | Element | ISceneOptions | IElementOptions)[];  //模板子节点
 }
