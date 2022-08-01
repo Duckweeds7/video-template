@@ -2,7 +2,8 @@ import ISceneOptions from './interface/ISceneOptions';
 import ITransitionOptions from "./components/interface/ITransitionOptions";
 import IFilterOptions from "./components/interface/IFilterOptions";
 import Base from './Base';
-import Transition from "./components/Transition";
+import Element from "./elements/Element";
+import Transition from './components/Transition';
 import Filter from "./components/Filter";
 import util from './util';
 
@@ -15,11 +16,13 @@ export default class Scene extends Base {
     backgroundColor?: string;  //场景背景颜色
     transition?: Transition | ITransitionOptions;  //场景转场效果
     filter?: Filter | IFilterOptions;  //场景滤镜
-    children?: [] = [];  //场景子节点
+    children?: Element[] = [];  //场景子节点
 
     constructor(options: ISceneOptions) {
         super();
         this.optionsInject(options, {
+            transition: (v: any) => Transition.create(v),
+            filter: (v: any) => Filter.create(v),
             children: (v: any) => util.defaultTo(v, [])
             .map((options: any) => {})
         }, {
@@ -34,6 +37,6 @@ export default class Scene extends Base {
         });
     }
 
-
+    
 
 }

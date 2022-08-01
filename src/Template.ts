@@ -1,6 +1,8 @@
 import ITemplateOptions from "./interface/ITemplateOptions";
 import IFilterOptions from "./components/interface/IFilterOptions";
 import Base from "./Base";
+import Scene from './Scene';
+import Element from './elements/Element';
 import util from './util';
 
 export default class Template extends Base {
@@ -27,7 +29,7 @@ export default class Template extends Base {
     filter?: IFilterOptions;  //模板滤镜
     createTime?: number;  //模板创建时间戳
     updateTime?: number;  //模板更新时间戳
-    children?: [] = [];  //模板子节点
+    children?: (Scene | Element)[] = [];  //模板子节点
 
     constructor(options: ITemplateOptions) {
         super();
