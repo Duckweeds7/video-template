@@ -26,4 +26,4 @@ export default interface IElementOptions {
     trackId?: string;  //元素所在轨道ID
     value?: string;  //元素值
     children?: (Element | IElementOptions)[];  //元素子节点
-}
+};

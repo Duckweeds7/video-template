@@ -2,13 +2,15 @@ import IElementOptions from './interface/IElementOptions';
 import Effect from '../components/Effect';
 import Filter from '../components/Filter';
 import ElementFactory from '../ElementFactory';
+import ElementTypes from '../enums/ElementTypes';
 import Base from '../Base';
 import util from '../util';
 
 export default class Element extends Base {
 
-    static type = "element";
-    readonly type = "element";
+    static Type = ElementTypes;
+    static type = ElementTypes.Element;
+    type = ElementTypes.Element;
     id = '';  //元素ID
     name?: string;  //元素名称
     x?: number;  //元素横轴坐标
