@@ -12,8 +12,7 @@ enum ElementTypes {
     Sticker = 'sticker',
     Subtitle = 'subtitle',
     Media = 'media',
-    SSML = 'ssml',
-    Link = 'link'
-  }
-  
-  export default ElementTypes;
+    SSML = 'ssml'
+}
+
+export default ElementTypes;
