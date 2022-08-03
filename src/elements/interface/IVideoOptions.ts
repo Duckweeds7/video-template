@@ -3,5 +3,5 @@ import ICropOptions from "../components/interface/ICropOptions";
 import Crop from "../components/Crop";
 
 export default interface IVideoOptions extends IMediaOptions {
-    crop?: Crop | ICropOptions;
+    crop?: Crop | ICropOptions;  //视频裁剪参数
 };
