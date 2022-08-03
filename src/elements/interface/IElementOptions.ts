@@ -3,7 +3,6 @@ import Effect from "../../components/Effect";
 import Element from "../Element";
 
 export default interface IElementOptions {
-    type: string;  //元素类型
     id: string;  //元素ID
     name?: string;  //元素名称
     x?: number;  //元素横轴坐标
